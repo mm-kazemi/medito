@@ -1,0 +1,14 @@
+{
+  // Tailwind v4 uses custom at-rules (@theme, @utility, @variant…)
+  // that VS Code's built-in CSS validator doesn't recognise.
+  // Suppressing the warning keeps the editor experience clean.
+  "css.lint.unknownAtRules": "ignore",
+
+  // Also silence Tailwind-specific unknown properties/values
+  "css.validate": false,
+
+  // Use the Tailwind CSS IntelliSense extension for validation instead
+  "editor.quickSuggestions": {
+    "strings": "on"
+  }
+}
