@@ -22,7 +22,7 @@ import {
   selectSearchQuery,
   selectSearchCity,
 } from "@/store/slices/searchSlice";
-import { MAJOR_CITIES } from "@/constants";
+import { MAJOR_CITIES, SPECIALTIES } from "@/constants";
 
 const POPULAR_SEARCHES = [
   "متخصص قلب",
@@ -31,6 +31,24 @@ const POPULAR_SEARCHES = [
   "اطفال",
   "پوست و مو",
 ] as const;
+
+/* Mock doctor name suggestions (subset of pool) */
+const DOCTOR_SUGGESTIONS = [
+  "دکتر علی رضایی",
+  "دکتر سارا احمدی",
+  "دکتر نگار محمدی",
+  "دکتر محسن کریمی",
+  "دکتر مهدی نظری",
+  "دکتر مریم صادقی",
+  "دکتر رضا حسینی",
+] as const;
+
+/* Build combined suggestion pool: specialtyLabel + doctor names */
+const ALL_SUGGESTIONS: string[] = [
+  ...SPECIALTIES.map((s) => s.label),
+  ...DOCTOR_SUGGESTIONS,
+];
+
 
 /* ----------------------------------------------------------------
    Searchable city combobox — self-contained, minimal
@@ -176,6 +194,106 @@ function CityCombobox({
 }
 
 /* ----------------------------------------------------------------
+   QueryAutocomplete — inline suggestion dropdown
+   ---------------------------------------------------------------- */
+function QueryAutocomplete({
+  value,
+  onSelect,
+  inputClassName,
+  inputId,
+  placeholder,
+}: {
+  value: string;
+  onSelect: (term: string) => void;
+  inputClassName?: string;
+  inputId: string;
+  placeholder: string;
+}) {
+  const dispatch = useAppDispatch();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const suggestions = value.trim().length >= 2
+    ? ALL_SUGGESTIONS.filter((s) => s.includes(value.trim())).slice(0, 4)
+    : [];
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    const esc = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    document.addEventListener("mousedown", handler);
+    document.addEventListener("keydown", esc);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+      document.removeEventListener("keydown", esc);
+    };
+  }, []);
+
+  return (
+    <div ref={ref} className="relative w-full">
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-y-0 start-3 flex items-center text-neutral-400"
+      >
+        <Search size={16} />
+      </span>
+      <input
+        id={inputId}
+        type="search"
+        value={value}
+        onChange={(e) => {
+          dispatch(setQuery(e.target.value));
+          setOpen(true);
+        }}
+        onFocus={() => { if (value.trim().length >= 2) setOpen(true); }}
+        placeholder={placeholder}
+        autoComplete="off"
+        className={cn(
+          "w-full ps-10 pe-3",
+          "text-sm bg-transparent text-neutral-900",
+          "placeholder:text-neutral-400",
+          "outline-none border-0",
+          inputClassName
+        )}
+        aria-label="جستجوی پزشک"
+        aria-autocomplete="list"
+        aria-expanded={open && suggestions.length > 0}
+      />
+      {open && suggestions.length > 0 && (
+        <ul
+          role="listbox"
+          className={cn(
+            "absolute z-50 mt-1 w-full min-w-[18rem]",
+            "bg-neutral-0 border border-neutral-200 rounded-xl shadow-md",
+            "py-1 overflow-hidden"
+          )}
+        >
+          {suggestions.map((s) => (
+            <li key={s}>
+              <button
+                type="button"
+                role="option"
+                aria-selected={false}
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  onSelect(s);
+                  setOpen(false);
+                }}
+                className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm text-start hover:bg-neutral-50 transition-colors duration-100 text-neutral-700"
+              >
+                <Search size={13} className="text-neutral-400 shrink-0" aria-hidden="true" />
+                {s}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+/* ----------------------------------------------------------------
    HeroSearch
    ---------------------------------------------------------------- */
 export function HeroSearch() {
@@ -209,30 +327,17 @@ export function HeroSearch() {
           "bg-neutral-0 border border-neutral-200 rounded-xl",
           "shadow-sm p-1.5 gap-0"
         )}>
-          {/* Query input */}
-          <div className="relative flex-1">
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-y-0 start-3 flex items-center text-neutral-400"
-            >
-              <Search size={16} />
-            </span>
-            <input
-              id="search-desktop-query"
-              type="search"
-              value={query}
-              onChange={(e) => dispatch(setQuery(e.target.value))}
-              placeholder="نام پزشک، تخصص یا بیماری…"
-              autoComplete="off"
-              className={cn(
-                "w-full h-11 ps-10 pe-3",
-                "text-sm bg-transparent text-neutral-900",
-                "placeholder:text-neutral-400",
-                "outline-none"
-              )}
-              aria-label="جستجوی پزشک"
-            />
-          </div>
+          {/* Query autocomplete */}
+          <QueryAutocomplete
+            value={query}
+            onSelect={(term) => {
+              dispatch(setQuery(term));
+              router.push(`/doctors?q=${encodeURIComponent(term)}`);
+            }}
+            inputId="search-desktop-query"
+            placeholder="نام پزشک، تخصص یا بیماری…"
+            inputClassName="h-11"
+          />
 
           {/* Divider */}
           <div className="w-px h-6 bg-neutral-200 shrink-0" aria-hidden="true" />
@@ -268,35 +373,31 @@ export function HeroSearch() {
             "bg-neutral-0 border border-neutral-200 rounded-xl",
             "shadow-sm px-4 h-14"
           )}>
-            <Search size={18} className="text-neutral-400 shrink-0" aria-hidden="true" />
-            <input
-              id="search-mobile-query"
-              type="search"
+          <div className="relative flex-1">
+            <QueryAutocomplete
               value={query}
-              onChange={(e) => dispatch(setQuery(e.target.value))}
+              onSelect={(term) => {
+                dispatch(setQuery(term));
+                router.push(`/doctors?q=${encodeURIComponent(term)}`);
+              }}
+              inputId="search-mobile-query"
               placeholder="پزشک یا تخصص…"
-              autoComplete="off"
-              className={cn(
-                "flex-1 h-full",
-                "text-base bg-transparent text-neutral-900",
-                "placeholder:text-neutral-400",
-                "outline-none"
-              )}
-              aria-label="جستجوی پزشک"
+              inputClassName="h-14 text-base"
             />
-            <button
-              type="button"
-              onClick={() => setShowCity((v) => !v)}
-              aria-expanded={showCity}
-              aria-label={showCity ? "پنهان کردن شهر" : "انتخاب شهر"}
-              className="text-neutral-400 hover:text-neutral-700 transition-colors p-1 rounded-md"
-            >
-              <MapPin size={16} aria-hidden="true" />
-              {showCity
-                ? <ChevronUp size={12} className="mx-auto mt-0.5" aria-hidden="true" />
-                : <ChevronDown size={12} className="mx-auto mt-0.5" aria-hidden="true" />
-              }
-            </button>
+          </div>
+          <button
+            type="button"
+            onClick={() => setShowCity((v) => !v)}
+            aria-expanded={showCity}
+            aria-label={showCity ? "پنهان کردن شهر" : "انتخاب شهر"}
+            className="text-neutral-400 hover:text-neutral-700 transition-colors p-1 rounded-md shrink-0"
+          >
+            <MapPin size={16} aria-hidden="true" />
+            {showCity
+              ? <ChevronUp size={12} className="mx-auto mt-0.5" aria-hidden="true" />
+              : <ChevronDown size={12} className="mx-auto mt-0.5" aria-hidden="true" />
+            }
+          </button>
           </div>
 
           {showCity && (

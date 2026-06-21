@@ -65,7 +65,7 @@ function DoctorAvatar({ doctor }: { doctor: Doctor }) {
    ---------------------------------------------------------------- */
 function RatingBadge({ rating, count }: { rating: number; count: number }) {
   return (
-    <span className="inline-flex items-center gap-1">
+    <span className="inline-flex items-center gap-1 whitespace-nowrap">
       <Star
         size={12}
         className="text-amber-400 fill-amber-400 shrink-0"
@@ -106,23 +106,22 @@ export function DoctorCard({ doctor, className }: DoctorCardProps) {
       href={profileHref}
       aria-label={`مشاهده پروفایل ${doctor.displayName}`}
       className={cn(
-        /* Base card */
-        "group relative flex flex-col sm:flex-row gap-4 p-5",
+        "group relative flex flex-col sm:flex-row gap-3 p-4 sm:p-5",
         "rounded-2xl border border-neutral-100 bg-neutral-0",
-        /* Hover elevation */
         "transition-all duration-200",
         "hover:shadow-md hover:shadow-neutral-200/70",
         "hover:border-neutral-200 hover:-translate-y-0.5",
         className
       )}
     >
-      {/* ── Avatar ─────────────────────────────────────────────── */}
-      <span className="shrink-0" aria-hidden="true">
-        <DoctorAvatar doctor={doctor} />
-      </span>
+      {/* ── Avatar + Info row (mobile: side by side) ────────────── */}
+      <div className="flex flex-row sm:contents gap-3">
+        <span className="shrink-0" aria-hidden="true">
+          <DoctorAvatar doctor={doctor} />
+        </span>
 
-      {/* ── Info ─────────────────────────────────────────────── */}
-      <div className="flex-1 min-w-0 flex flex-col gap-2">
+        {/* ── Info ──────────────────────────────────────────── */}
+        <div className="flex-1 min-w-0 flex flex-col gap-1.5">
 
         {/* Row 1: Name + availability badge */}
         <div className="flex items-start justify-between gap-2">
@@ -189,13 +188,14 @@ export function DoctorCard({ doctor, className }: DoctorCardProps) {
           ))}
         </div>
 
-      </div>
+        </div>{/* end info */}
+      </div>{/* end mobile flex row */}
 
-      {/* ── CTA column ───────────────────────────────────────── */}
-      <div className="flex flex-col items-end sm:items-center justify-between shrink-0 sm:border-s sm:border-neutral-100 sm:ps-4">
+      {/* ── CTA column ───────────────────────────────────────────── */}
+      <div className="flex flex-row sm:flex-col items-center justify-between sm:justify-center shrink-0 sm:border-s sm:border-neutral-100 sm:ps-4 pt-1 sm:pt-0 border-t border-neutral-100 sm:border-t-0">
 
         {/* Visit fee */}
-        <div className="text-center mb-2">
+        <div className="text-start sm:text-center mb-0 sm:mb-2">
           <p className="text-[0.65rem] text-neutral-400 mb-0.5">ویزیت</p>
           <p className="text-sm font-bold text-neutral-800 tabular-nums">
             {formatCurrency(doctor.visitFee)}

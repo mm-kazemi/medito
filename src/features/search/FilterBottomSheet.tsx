@@ -81,10 +81,10 @@ export function FilterBottomSheet() {
           "lg:hidden",
           /* Positioning */
           "fixed inset-x-0 bottom-0 z-50",
-          /* Sizing — max 85% of viewport height */
+          /* Sizing */
           "max-h-[85dvh]",
           /* Layout */
-          "flex flex-col",
+          "flex flex-col overflow-hidden",
           "bg-neutral-0 rounded-t-2xl",
           "shadow-lg",
           /* Slide-up transition */
