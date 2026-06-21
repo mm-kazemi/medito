@@ -58,7 +58,7 @@ export default function RootLayout({
         The sticky Header is self-contained (sticky top-0 z-40 inside Header.tsx).
         Pages now use natural document scroll.
       */}
-      <body className="bg-neutral-0 text-neutral-900 antialiased min-h-dvh">
+      <body className="bg-neutral-0 text-neutral-900 antialiased min-h-dvh flex flex-col">
         <Providers>{children}</Providers>
       </body>
     </html>

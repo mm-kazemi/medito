@@ -122,16 +122,7 @@ export default function HomePage() {
       >
         <div className="w-full max-w-2xl mx-auto flex flex-col items-center">
 
-          {/* Trust badge */}
-          <span className={cn(
-            "inline-flex items-center gap-1.5",
-            "px-3 py-1 rounded-full mb-5",
-            "text-xs font-medium",
-            "bg-brand-50 text-brand-700 border border-brand-100"
-          )}>
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-500 shrink-0" aria-hidden="true" />
-            پلتفرم شماره ۱ نوبت‌دهی آنلاین ایران
-          </span>
+
 
           {/* Headline — concise on mobile (2 lines), larger on desktop */}
           <h1
@@ -161,15 +152,19 @@ export default function HomePage() {
       {/* ══════════════════════════════════════════════════════════
           2. STATS — social proof strip
           ══════════════════════════════════════════════════════════ */}
-      <section aria-label="آمار پلتفرم" className="border-b border-neutral-100 bg-neutral-0">
-        <div className="container-app py-5">
-          <dl className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <section aria-label="آمار پلتفرم" className="border-b border-neutral-100 bg-neutral-50">
+        <div className="container-app py-6">
+          <dl className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {STATS.map((stat) => (
-              <div key={stat.id} id={stat.id} className="text-center py-2">
-                <dt className="text-lg sm:text-xl font-bold text-neutral-900 leading-tight tabular-nums">
+              <div
+                key={stat.id}
+                id={stat.id}
+                className="text-center py-4 px-3 rounded-2xl bg-neutral-0 border border-neutral-100"
+              >
+                <dt className="text-xl sm:text-2xl font-bold text-neutral-900 leading-tight tabular-nums tracking-tight">
                   {stat.value}
                 </dt>
-                <dd className="text-xs text-neutral-400 mt-0.5">{stat.label}</dd>
+                <dd className="text-xs text-neutral-400 mt-1 font-medium">{stat.label}</dd>
               </div>
             ))}
           </dl>
@@ -220,7 +215,8 @@ export default function HomePage() {
                     "p-2 sm:p-3 rounded-xl",
                     "border border-neutral-100 bg-neutral-0",
                     "hover:border-brand-200 hover:bg-brand-50",
-                    "transition-colors duration-150 group"
+                    "hover:-translate-y-0.5",
+                    "transition-all duration-150 group"
                   )}
                 >
                   <span className="text-2xl leading-none" aria-hidden="true">
@@ -285,9 +281,11 @@ export default function HomePage() {
             aria-label="پزشکان برتر"
           >
             {FEATURED_DOCTORS.map((doctor) => (
-              <article
+              <Link
                 key={doctor.id}
+                href={`/doctors/${doctor.id}`}
                 role="listitem"
+                aria-label={`مشاهده پروفایل ${doctor.name}`}
                 className={cn(
                   /* Mobile snap card */
                   "snap-start shrink-0 w-[80vw] max-w-[280px]",
@@ -296,7 +294,7 @@ export default function HomePage() {
                   /* Card styles */
                   "flex flex-col gap-3 p-4 rounded-xl",
                   "border border-neutral-100 bg-neutral-0",
-                  "hover:border-neutral-200 hover:shadow-sm",
+                  "hover:border-neutral-200 hover:shadow-md hover:-translate-y-1",
                   "transition-all duration-150"
                 )}
               >
@@ -378,7 +376,7 @@ export default function HomePage() {
                     رزرو نوبت
                   </Link>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </div>

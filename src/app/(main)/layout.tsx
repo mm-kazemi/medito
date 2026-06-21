@@ -33,8 +33,8 @@ export default function MainLayout({ children }: MainLayoutProps) {
       {/* Sticky app header — position handled inside Header.tsx */}
       <Header />
 
-      {/* Page content — plain block, grows with content, document scrolls */}
-      <main>
+      {/* Page content — flex-1 ensures it grows to push Footer down */}
+      <main className="flex-1">
         {children}
       </main>
 

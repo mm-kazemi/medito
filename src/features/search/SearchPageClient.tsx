@@ -122,7 +122,7 @@ function SearchPageInner() {
               "sticky top-[4.5rem]",
               "rounded-2xl border border-neutral-100 bg-neutral-0",
               "overflow-hidden",
-              "max-h-[calc(100dvh-5.5rem)]"
+              "h-[calc(100dvh-5.5rem)]"
             )}
           >
             <div className="shrink-0 px-4 py-4 border-b border-neutral-100">
