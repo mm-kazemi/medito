@@ -113,11 +113,21 @@ textarea::placeholder {
   color: var(--color-neutral-400);
 }
 
-/* Focus ring — inset so it never bleeds outside the element */
+/* Focus ring — clean border approach, zero layout shift */
 :focus-visible {
   outline: none;
-  box-shadow: inset 0 0 0 2px var(--color-brand-500);
+  border-color: var(--color-brand-500) !important;
+  box-shadow: 0 0 0 1px var(--color-brand-500);
   border-radius: 4px;
+}
+
+/* Buttons and links: small outer glow instead of border change */
+button:focus-visible,
+a:focus-visible,
+[role="option"]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-brand-200), 0 0 0 4px var(--color-brand-500);
+  border-radius: 6px;
 }
 
 /* Scrollbar */

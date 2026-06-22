@@ -99,7 +99,7 @@ export function FilterSidebar({ onClose }: FilterSidebarProps) {
     <div className="flex flex-col h-full">
 
       {/* ── Scrollable filter body ─────────────────────────────── */}
-      <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-4 py-5 flex flex-col gap-6">
+      <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-4 py-5 flex flex-col items-stretch gap-6">
 
         {/* ── City ─────────────────────────────────────────────── */}
         <FilterSection title="شهر">
@@ -332,16 +332,17 @@ export function FilterSidebar({ onClose }: FilterSidebarProps) {
               />
               <span
                 className={cn(
-                  "inline-flex w-10 h-5 rounded-full border-2 transition-colors duration-200 relative",
+                  "relative inline-block w-10 h-[22px] rounded-full transition-colors duration-200 shrink-0",
                   filters.isAvailable
-                    ? "bg-brand-500 border-brand-500"
-                    : "bg-neutral-200 border-neutral-200"
+                    ? "bg-brand-500"
+                    : "bg-neutral-200"
                 )}
               >
                 <span
                   className={cn(
-                    "absolute top-0.5 w-3.5 h-3.5 rounded-full bg-white shadow-sm transition-[inset-inline-start] duration-200",
-                    filters.isAvailable ? "start-[1.25rem]" : "start-0.5"
+                    "absolute top-[3px] w-4 h-4 rounded-full bg-white shadow-sm",
+                    "transition-[inset-inline-start] duration-200 ease-in-out",
+                    filters.isAvailable ? "start-[20px]" : "start-[3px]"
                   )}
                 />
               </span>
