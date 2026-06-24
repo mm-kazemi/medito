@@ -26,10 +26,11 @@ export const ROUTES = {
   BOOKING:        (doctorId: string) => `/booking/${doctorId}`,
   LOGIN:          "/login",
   REGISTER:       "/register",
-  DASHBOARD:      "/dashboard",
-  PROFILE:        "/dashboard/profile",
-  SCHEDULE:       "/dashboard/schedule",
-  APPOINTMENTS:   "/dashboard/appointments",
+  DASHBOARD:         "/dashboard",
+  PROFILE:           "/dashboard/profile",
+  SCHEDULE:          "/dashboard/schedule",
+  APPOINTMENTS:      "/dashboard/appointments",
+  PATIENT_DASHBOARD: "/patient",
 } as const;
 
 /* ============================================================
