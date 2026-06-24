@@ -25,6 +25,7 @@
 
 import { Suspense } from "react";
 import { SlidersHorizontal } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import {
@@ -88,21 +89,16 @@ function SearchPageInner() {
             <ViewToggle />
 
             {/* Mobile filter button */}
-            <button
-              type="button"
+            <Button
               id="btn-open-filters"
+              variant="outline"
+              size="md"
               aria-controls="filter-bottom-sheet"
               aria-expanded={isFilterSheetOpen}
               onClick={() => dispatch(openFilterSidebar())}
               className={cn(
-                "lg:hidden",
-                "flex items-center gap-2",
-                "h-10 px-4 rounded-xl",
-                "text-sm font-medium",
-                "border border-neutral-200 bg-neutral-0",
-                "hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700",
-                "transition-colors duration-150 select-none",
-                "outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                "lg:hidden gap-2",
+                "hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700"
               )}
             >
               <SlidersHorizontal size={15} aria-hidden="true" />
@@ -115,7 +111,7 @@ function SearchPageInner() {
                   {activeFilterCount}
                 </span>
               )}
-            </button>
+            </Button>
           </div>
         </div>
       </div>

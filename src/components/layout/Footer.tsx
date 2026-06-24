@@ -26,28 +26,28 @@ const FOOTER_LINKS = [
   {
     heading: "خدمات",
     links: [
-      { label: "جستجوی پزشک",   href: "/doctors"    },
-      { label: "تخصص‌ها",        href: "/specialties" },
-      { label: "بیمارستان‌ها",   href: "/hospitals"   },
-      { label: "مشاوره آنلاین",  href: "/consult"     },
+      { label: "جستجوی پزشک",   href: "/doctors" },
+      { label: "تخصص‌ها",        href: "/doctors" },
+      { label: "بیمارستان‌ها",   href: "/"        },
+      { label: "مشاوره آنلاین",  href: "/"        },
     ],
   },
   {
     heading: "مدیتو",
     links: [
-      { label: "درباره ما",      href: "/about"   },
-      { label: "تماس با ما",     href: "/contact" },
-      { label: "بلاگ",           href: "/blog"    },
-      { label: "فرصت‌های شغلی",  href: "/careers" },
+      { label: "درباره ما",      href: "/" },
+      { label: "تماس با ما",     href: "/" },
+      { label: "بلاگ",           href: "/" },
+      { label: "فرصت‌های شغلی",  href: "/" },
     ],
   },
   {
     heading: "پشتیبانی",
     links: [
-      { label: "حریم خصوصی",    href: "/privacy"  },
-      { label: "قوانین و مقررات", href: "/terms"   },
-      { label: "سوالات متداول",  href: "/faq"      },
-      { label: "راهنمای استفاده", href: "/help"    },
+      { label: "حریم خصوصی",     href: "/" },
+      { label: "قوانین و مقررات", href: "/" },
+      { label: "سوالات متداول",   href: "/" },
+      { label: "راهنمای استفاده", href: "/" },
     ],
   },
 ] as const;
@@ -159,7 +159,7 @@ export function Footer() {
               </h3>
               <ul role="list" className="flex flex-col gap-2">
                 {links.map(({ label, href }) => (
-                  <li key={href}>
+                  <li key={label}>
                     <Link
                       href={href}
                       className="text-xs text-neutral-500 hover:text-brand-600 transition-colors duration-150"
@@ -183,12 +183,12 @@ export function Footer() {
           </p>
           <nav aria-label="لینک‌های قانونی" className="flex items-center gap-4">
             {[
-              { label: "حریم خصوصی", href: "/privacy" },
-              { label: "قوانین",      href: "/terms"   },
-              { label: "تماس با ما",  href: "/contact" },
+              { label: "حریم خصوصی", href: "/" },
+              { label: "قوانین",      href: "/" },
+              { label: "تماس با ما",  href: "/" },
             ].map(({ label, href }) => (
               <Link
-                key={href}
+                key={label}
                 href={href}
                 className="text-xs text-neutral-400 hover:text-neutral-600 transition-colors duration-150"
               >

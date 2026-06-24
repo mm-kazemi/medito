@@ -33,10 +33,10 @@ import { selectIsAuthenticated, selectCurrentUser }    from "@/store/slices/auth
    Navigation items — must match Header.tsx
    ---------------------------------------------------------------- */
 const NAV_LINKS = [
-  { href: "/doctors",    label: "پزشکان",        icon: "🩺" },
-  { href: "/specialties", label: "تخصص‌ها",      icon: "🏷️" },
-  { href: "/hospitals",  label: "بیمارستان‌ها",  icon: "🏥" },
-  { href: "/about",      label: "درباره ما",      icon: "ℹ️" },
+  { href: "/doctors", label: "پزشکان",       icon: "🩺" },
+  { href: "/doctors", label: "تخصص‌ها",      icon: "🏷️" },
+  { href: "/",        label: "بیمارستان‌ها",  icon: "🏥" },
+  { href: "/",        label: "درباره ما",     icon: "ℹ️" },
 ] as const;
 
 /* ----------------------------------------------------------------
@@ -152,7 +152,7 @@ export function MobileDrawer() {
               const isActive =
                 pathname === href || pathname.startsWith(`${href}/`);
               return (
-                <li key={href}>
+                <li key={label}>
                   <Link
                     href={href}
                     id={`mobile-nav-${href.replace("/", "")}`}

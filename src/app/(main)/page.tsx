@@ -43,7 +43,7 @@ const STATS = [
 
 const FEATURED_DOCTORS = [
   {
-    id:        "dr-ahmadi",
+    id:        "dr-sara-ahmadi",
     name:      "دکتر سارا احمدی",
     specialty: "قلب و عروق",
     city:      "تهران",
@@ -56,7 +56,7 @@ const FEATURED_DOCTORS = [
     badge:     "ظرفیت محدود",
   },
   {
-    id:        "dr-rezaei",
+    id:        "dr-ali-rezaei",
     name:      "دکتر علی رضایی",
     specialty: "مغز و اعصاب",
     city:      "اصفهان",
@@ -69,7 +69,7 @@ const FEATURED_DOCTORS = [
     badge:     "نوبت فوری",
   },
   {
-    id:        "dr-mohammadi",
+    id:        "dr-negar-mohammadi",
     name:      "دکتر نگار محمدی",
     specialty: "پوست و مو",
     city:      "تهران",
@@ -82,7 +82,7 @@ const FEATURED_DOCTORS = [
     badge:     null,
   },
   {
-    id:        "dr-karimi",
+    id:        "dr-mohsen-karimi",
     name:      "دکتر محسن کریمی",
     specialty: "دندان‌پزشکی",
     city:      "مشهد",
@@ -191,7 +191,7 @@ export default function HomePage() {
               </p>
             </div>
             <Link
-              href="/specialties"
+              href="/doctors"
               id="link-all-specialties"
               className="flex items-center gap-1 text-xs font-medium text-brand-600 hover:text-brand-700 transition-colors duration-150 shrink-0 ms-4"
             >

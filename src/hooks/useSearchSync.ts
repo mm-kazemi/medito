@@ -139,8 +139,11 @@ export function useSearchSync() {
     const paramsString = params.toString();
     const newUrl       = paramsString ? `${pathname}?${paramsString}` : pathname;
 
-    // `replace` keeps a clean history — each filter change doesn't add
-    // a new history entry, so the back button goes back to the previous page.
+    // Skip if URL hasn't changed to avoid spurious router updates
+    const currentSearch = window.location.search;
+    const newSearch     = paramsString ? `?${paramsString}` : "";
+    if (currentSearch === newSearch) return;
+
     router.replace(newUrl, { scroll: false });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters, sortBy]);

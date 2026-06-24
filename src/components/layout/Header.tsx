@@ -34,10 +34,10 @@ import { selectIsAuthenticated, selectCurrentUser } from "@/store/slices/authSli
    Navigation items
    ---------------------------------------------------------------- */
 const NAV_LINKS = [
-  { href: "/doctors",   label: "پزشکان"        },
-  { href: "/specialties", label: "تخصص‌ها"    },
-  { href: "/hospitals", label: "بیمارستان‌ها"  },
-  { href: "/about",     label: "درباره ما"     },
+  { href: "/doctors", label: "پزشکان"       },
+  { href: "/doctors", label: "تخصص‌ها"      },
+  { href: "/",        label: "بیمارستان‌ها"  },
+  { href: "/",        label: "درباره ما"     },
 ] as const;
 
 /* ----------------------------------------------------------------
@@ -113,7 +113,7 @@ export function Header() {
           className="hidden md:flex items-center gap-1 flex-1 justify-center"
         >
           {NAV_LINKS.map((link) => (
-            <NavLink key={link.href} href={link.href} label={link.label} />
+            <NavLink key={link.label} href={link.href} label={link.label} />
           ))}
         </nav>
 
