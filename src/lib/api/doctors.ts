@@ -37,6 +37,8 @@ const MOCK_DOCTORS: Doctor[] = [
     isAvailable:    true,
     nextSlot:       "امروز، ساعت ۱۵:۳۰",
     yearsExp:       12,
+    lat:            35.7575,
+    lng:            51.4075,
   },
   {
     id:             "d-002",
@@ -57,6 +59,8 @@ const MOCK_DOCTORS: Doctor[] = [
     isAvailable:    true,
     nextSlot:       "فردا، ساعت ۱۱:۰۰",
     yearsExp:       8,
+    lat:            35.7800,
+    lng:            51.3700,
   },
   {
     id:             "d-003",
@@ -77,6 +81,8 @@ const MOCK_DOCTORS: Doctor[] = [
     isAvailable:    true,
     nextSlot:       "پس‌فردا، ساعت ۹:۰۰",
     yearsExp:       15,
+    lat:            36.2972,
+    lng:            59.6067,
   },
   {
     id:             "d-004",
@@ -97,6 +103,8 @@ const MOCK_DOCTORS: Doctor[] = [
     isAvailable:    false,
     nextSlot:       "فردا، ساعت ۱۰:۰۰",
     yearsExp:       10,
+    lat:            35.7050,
+    lng:            51.4500,
   },
   {
     id:             "d-005",
@@ -117,6 +125,8 @@ const MOCK_DOCTORS: Doctor[] = [
     isAvailable:    true,
     nextSlot:       "امروز، ساعت ۱۷:۰۰",
     yearsExp:       20,
+    lat:            32.6539,
+    lng:            51.6660,
   },
   {
     id:             "d-006",
@@ -137,6 +147,8 @@ const MOCK_DOCTORS: Doctor[] = [
     isAvailable:    true,
     nextSlot:       "فردا، ساعت ۱۶:۰۰",
     yearsExp:       7,
+    lat:            35.7250,
+    lng:            51.3850,
   },
   {
     id:             "d-007",
@@ -157,6 +169,8 @@ const MOCK_DOCTORS: Doctor[] = [
     isAvailable:    false,
     nextSlot:       "شنبه، ساعت ۱۰:۰۰",
     yearsExp:       18,
+    lat:            38.0800,
+    lng:            46.2919,
   },
   {
     id:             "d-008",
@@ -177,6 +191,8 @@ const MOCK_DOCTORS: Doctor[] = [
     isAvailable:    true,
     nextSlot:       "امروز، ساعت ۱۸:۰۰",
     yearsExp:       11,
+    lat:            36.3100,
+    lng:            59.6200,
   },
   {
     id:             "d-009",
@@ -197,6 +213,8 @@ const MOCK_DOCTORS: Doctor[] = [
     isAvailable:    true,
     nextSlot:       "همین الان",
     yearsExp:       5,
+    lat:            35.6900,
+    lng:            51.3700,
   },
   {
     id:             "d-010",
@@ -217,6 +235,8 @@ const MOCK_DOCTORS: Doctor[] = [
     isAvailable:    true,
     nextSlot:       "فردا، ساعت ۱۴:۰۰",
     yearsExp:       9,
+    lat:            29.5918,
+    lng:            52.5837,
   },
   {
     id:             "d-011",
@@ -237,6 +257,8 @@ const MOCK_DOCTORS: Doctor[] = [
     isAvailable:    true,
     nextSlot:       "پس‌فردا، ساعت ۱۱:۰۰",
     yearsExp:       14,
+    lat:            35.7650,
+    lng:            51.4250,
   },
   {
     id:             "d-012",
@@ -257,6 +279,8 @@ const MOCK_DOCTORS: Doctor[] = [
     isAvailable:    false,
     nextSlot:       "شنبه، ساعت ۸:۰۰",
     yearsExp:       6,
+    lat:            35.8318,
+    lng:            50.9998,
   },
   /* ── Low-rating doctors (Fix #7) ───────────────────────── */
   {
@@ -278,6 +302,8 @@ const MOCK_DOCTORS: Doctor[] = [
     isAvailable:    true,
     nextSlot:       "همین الان",
     yearsExp:       2,
+    lat:            35.6550,
+    lng:            51.3450,
   },
   {
     id:             "d-014",
@@ -298,6 +324,8 @@ const MOCK_DOCTORS: Doctor[] = [
     isAvailable:    false,
     nextSlot:       "سه‌شنبه، ساعت ۱۰:۰۰",
     yearsExp:       3,
+    lat:            32.6700,
+    lng:            51.6800,
   },
   {
     id:             "d-015",
@@ -318,6 +346,8 @@ const MOCK_DOCTORS: Doctor[] = [
     isAvailable:    true,
     nextSlot:       "فردا، ساعت ۱۳:۰۰",
     yearsExp:       4,
+    lat:            36.2850,
+    lng:            59.5950,
   },
   {
     id:             "d-016",
@@ -338,6 +368,8 @@ const MOCK_DOCTORS: Doctor[] = [
     isAvailable:    true,
     nextSlot:       "یکشنبه، ساعت ۱۵:۰۰",
     yearsExp:       5,
+    lat:            35.7450,
+    lng:            51.4100,
   },
 ];
 

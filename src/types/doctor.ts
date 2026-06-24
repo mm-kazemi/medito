@@ -52,7 +52,11 @@ export interface Doctor {
   /** Short bio / description */
   bio?:           string;
   yearsExp:       number;
+  /** Geographic coordinates for the map marker */
+  lat?:           number;
+  lng?:           number;
 }
+
 
 /* ----------------------------------------------------------------
    Patient review

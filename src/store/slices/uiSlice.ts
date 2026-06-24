@@ -12,7 +12,8 @@ import type { RootState } from "@/store";
 /* ----------------------------------------------------------------
    Types
    ---------------------------------------------------------------- */
-export type ToastVariant = "success" | "error" | "warning" | "info";
+export type ToastVariant    = "success" | "error" | "warning" | "info";
+export type SearchViewMode  = "list" | "map";
 
 export interface Toast {
   id:       string;
@@ -22,10 +23,11 @@ export interface Toast {
 }
 
 export interface UIState {
-  isMobileDrawerOpen: boolean;
-  isSearchModalOpen:  boolean;
+  isMobileDrawerOpen:  boolean;
+  isSearchModalOpen:   boolean;
   isFilterSidebarOpen: boolean;
-  toasts:             Toast[];
+  searchViewMode:      SearchViewMode;
+  toasts:              Toast[];
 }
 
 /* ----------------------------------------------------------------
@@ -35,6 +37,7 @@ const initialState: UIState = {
   isMobileDrawerOpen:  false,
   isSearchModalOpen:   false,
   isFilterSidebarOpen: false,
+  searchViewMode:      "list",
   toasts:              [],
 };
 
@@ -73,6 +76,10 @@ const uiSlice = createSlice({
       state.isFilterSidebarOpen = !state.isFilterSidebarOpen;
     },
 
+    setSearchViewMode(state, action: PayloadAction<SearchViewMode>) {
+      state.searchViewMode = action.payload;
+    },
+
     /* --- Toast notifications --- */
     addToast(
       state,
@@ -103,6 +110,7 @@ export const {
   openFilterSidebar,
   closeFilterSidebar,
   toggleFilterSidebar,
+  setSearchViewMode,
   addToast,
   removeToast,
   clearAllToasts,
@@ -116,6 +124,7 @@ export const uiReducer = uiSlice.reducer;
 export const selectIsMobileDrawerOpen  = (state: RootState) => state.ui.isMobileDrawerOpen;
 export const selectIsSearchModalOpen   = (state: RootState) => state.ui.isSearchModalOpen;
 export const selectIsFilterSidebarOpen = (state: RootState) => state.ui.isFilterSidebarOpen;
+export const selectSearchViewMode      = (state: RootState) => state.ui.searchViewMode;
 export const selectToasts              = (state: RootState) => state.ui.toasts;
 
 /* ----------------------------------------------------------------

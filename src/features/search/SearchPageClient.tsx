@@ -39,7 +39,12 @@ import { useSearchSync }      from "@/hooks/useSearchSync";
 import { FilterSidebar }      from "./FilterSidebar";
 import { FilterBottomSheet }  from "./FilterBottomSheet";
 import { SearchResults }      from "./SearchResults";
+import { MapView }            from "./MapView";
+import { ViewToggle }         from "./ViewToggle";
 import { SkeletonDoctorList } from "@/components/common/Skeleton";
+import {
+  selectSearchViewMode,
+} from "@/store/slices/uiSlice";
 
 /* ----------------------------------------------------------------
    Inner component — uses useSearchSync (needs Suspense above)
@@ -52,6 +57,7 @@ function SearchPageInner() {
   const filters           = useAppSelector(selectSearchFilters);
   const query             = useAppSelector(selectSearchQuery);
   const isFilterSheetOpen = useAppSelector(selectIsFilterSidebarOpen);
+  const viewMode          = useAppSelector(selectSearchViewMode);
 
   /* Active filter count for badges */
   const activeFilterCount = [
@@ -78,35 +84,39 @@ function SearchPageInner() {
             </p>
           </div>
 
-          {/* Mobile filter button */}
-          <button
-            type="button"
-            id="btn-open-filters"
-            aria-controls="filter-bottom-sheet"
-            aria-expanded={isFilterSheetOpen}
-            onClick={() => dispatch(openFilterSidebar())}
-            className={cn(
-              "lg:hidden",
-              "flex items-center gap-2",
-              "h-10 px-4 rounded-xl",
-              "text-sm font-medium",
-              "border border-neutral-200 bg-neutral-0",
-              "hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700",
-              "transition-colors duration-150 select-none",
-              "outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
-            )}
-          >
-            <SlidersHorizontal size={15} aria-hidden="true" />
-            <span>فیلترها</span>
-            {activeFilterCount > 0 && (
-              <span
-                className="inline-flex items-center justify-center min-w-[1.25rem] h-5 px-1 rounded-full bg-brand-500 text-white text-xs font-bold"
-                aria-label={`${activeFilterCount} فیلتر فعال`}
-              >
-                {activeFilterCount}
-              </span>
-            )}
-          </button>
+          <div className="flex items-center gap-2">
+            <ViewToggle />
+
+            {/* Mobile filter button */}
+            <button
+              type="button"
+              id="btn-open-filters"
+              aria-controls="filter-bottom-sheet"
+              aria-expanded={isFilterSheetOpen}
+              onClick={() => dispatch(openFilterSidebar())}
+              className={cn(
+                "lg:hidden",
+                "flex items-center gap-2",
+                "h-10 px-4 rounded-xl",
+                "text-sm font-medium",
+                "border border-neutral-200 bg-neutral-0",
+                "hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700",
+                "transition-colors duration-150 select-none",
+                "outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+              )}
+            >
+              <SlidersHorizontal size={15} aria-hidden="true" />
+              <span>فیلترها</span>
+              {activeFilterCount > 0 && (
+                <span
+                  className="inline-flex items-center justify-center min-w-[1.25rem] h-5 px-1 rounded-full bg-brand-500 text-white text-xs font-bold"
+                  aria-label={`${activeFilterCount} فیلتر فعال`}
+                >
+                  {activeFilterCount}
+                </span>
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -141,12 +151,7 @@ function SearchPageInner() {
 
           {/* ── Results area ─────────────────────────────────────── */}
           <section aria-label="نتایج جستجو" className="flex flex-col gap-4">
-            {/*
-              SearchResults uses useQuery internally (a client-only hook),
-              so it does not need an extra Suspense — TanStack Query handles
-              its own loading state via isLoading.
-            */}
-            <SearchResults />
+            {viewMode === "list" ? <SearchResults /> : <MapView />}
           </section>
 
         </div>
