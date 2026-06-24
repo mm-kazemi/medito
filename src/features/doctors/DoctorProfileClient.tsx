@@ -339,7 +339,7 @@ function NotFound() {
    Sticky Booking CTA bar
    ================================================================ */
 function StickyBookingBar({ profile }: { profile: DoctorProfile }) {
-  const bookHref = ROUTES.BOOKING(profile.id);
+  const bookHref = ROUTES.BOOKING(profile.slug);
 
   return (
     <>
@@ -451,7 +451,7 @@ export function DoctorProfileClient({ slug }: DoctorProfileClientProps) {
 
             {/* CTA */}
             <Link
-              href={ROUTES.BOOKING(profile.id)}
+              href={ROUTES.BOOKING(profile.slug)}
               id="desktop-book-btn"
               aria-label={`دریافت نوبت از ${profile.displayName}`}
               className={cn(

@@ -166,7 +166,7 @@ export function DoctorCard({ doctor, className }: DoctorCardProps) {
         "pt-2.5 border-t border-neutral-100",
         "sm:flex-col sm:items-center sm:justify-center",
         "sm:border-t-0 sm:border-s sm:border-neutral-100",
-        "sm:ps-4 sm:pt-0 sm:shrink-0"
+        "sm:ps-4 sm:pt-0 sm:shrink-0 sm:ms-auto"
       )}>
         {/* Visit fee */}
         <div className="sm:text-center">
@@ -178,7 +178,7 @@ export function DoctorCard({ doctor, className }: DoctorCardProps) {
 
         {/* Book button */}
         <Link
-          href={ROUTES.BOOKING(doctor.id)}
+          href={ROUTES.BOOKING(doctor.slug)}
           id={`book-btn-${doctor.id}`}
           aria-label={`رزرو نوبت ${doctor.displayName}`}
           onClick={(e) => e.stopPropagation()}
