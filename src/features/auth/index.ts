@@ -1,7 +1,7 @@
 /**
  * Auth Feature — Barrel Export
- * Phase 10: Login, registration with React Hook Form + Zod
+ * src/features/auth/index.ts
  */
 
-// Phase 10 exports will be added here
-export {};
+export { LoginForm }    from "./LoginForm";
+export { RegisterForm } from "./RegisterForm";
