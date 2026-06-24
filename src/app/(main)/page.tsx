@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Home Page — Phase 5
  * src/app/(main)/page.tsx
  *
@@ -26,7 +26,7 @@ import { HeroSearch } from "@/features/home/HeroSearch";
 import { SPECIALTIES } from "@/constants";
 
 export const metadata: Metadata = {
-  title: "دکترتو — جستجو و نوبت‌دهی آنلاین پزشک",
+  title: "مدیتو — جستجو و نوبت‌دهی آنلاین پزشک",
   description:
     "پزشک مناسب خود را پیدا کنید. بیش از ۱۰٬۰۰۰ پزشک متخصص در سراسر ایران.",
 };

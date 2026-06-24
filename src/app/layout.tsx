@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+﻿import type { Metadata, Viewport } from "next";
 /* Font loaded as JS import — resolves correctly via Next.js bundler */
 import "@fontsource-variable/vazirmatn";
 import "./globals.css";
@@ -12,18 +12,18 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"
   ),
   title: {
-    default: "دکترتو — جستجو و نوبت‌دهی آنلاین پزشک",
-    template: "%s | دکترتو",
+    default: "مدیتو — جستجو و نوبت‌دهی آنلاین پزشک",
+    template: "%s | مدیتو",
   },
   description:
     "پلتفرم جامع جستجوی پزشک، رزرو آنلاین نوبت و مشاوره پزشکی. بیش از ۱۰,۰۰۰ پزشک متخصص در سراسر ایران.",
   keywords: ["نوبت دهی آنلاین", "جستجوی پزشک", "رزرو نوبت پزشک", "متخصص"],
-  authors: [{ name: "دکترتو" }],
+  authors: [{ name: "مدیتو" }],
   openGraph: {
     type: "website",
     locale: "fa_IR",
-    siteName: "دکترتو",
-    title: "دکترتو — جستجو و نوبت‌دهی آنلاین پزشک",
+    siteName: "مدیتو",
+    title: "مدیتو — جستجو و نوبت‌دهی آنلاین پزشک",
     description: "پلتفرم جامع جستجوی پزشک، رزرو آنلاین نوبت و مشاوره پزشکی.",
   },
   robots: { index: true, follow: true },

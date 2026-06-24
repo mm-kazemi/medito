@@ -1,4 +1,4 @@
-/**
+﻿/**
  * MobileDrawer — App Shell
  * src/components/layout/MobileDrawer.tsx
  *
@@ -111,7 +111,7 @@ export function MobileDrawer() {
           <Link
             href="/"
             className="flex items-center gap-2"
-            aria-label="دکترتو — صفحه اصلی"
+            aria-label="مدیتو — صفحه اصلی"
           >
             <span
               className="w-7 h-7 rounded-md bg-brand-500 flex items-center justify-center text-white text-xs font-bold select-none"
@@ -120,7 +120,7 @@ export function MobileDrawer() {
               د
             </span>
             <span className="text-sm font-bold text-neutral-900 tracking-tight">
-              دکترتو
+              مدیتو
             </span>
           </Link>
 

@@ -1,6 +1,6 @@
-/**
+﻿/**
  * Global TypeScript Type Definitions
- * پلتفرم دکترتو — تعاریف تایپ سراسری
+ * پلتفرم مدیتو — تعاریف تایپ سراسری
  *
  * These declarations extend built-in types and define project-wide
  * utility types used across all features.

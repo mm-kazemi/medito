@@ -56,7 +56,7 @@ export async function generateMetadata(
 
   return {
     title: `پروفایل ${readableName}`,
-    description: `مشاهده پروفایل کامل، نوبت‌دهی آنلاین و اطلاعات کلینیک ${readableName} در دکترتو.`,
+    description: `مشاهده پروفایل کامل، نوبت‌دهی آنلاین و اطلاعات کلینیک ${readableName} در مدیتو.`,
   };
 }
 

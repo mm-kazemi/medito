@@ -1,12 +1,12 @@
-/**
+﻿/**
  * Application Constants
- * پلتفرم دکترتو — ثابت‌های برنامه
+ * پلتفرم مدیتو — ثابت‌های برنامه
  */
 
 /* ============================================================
    APP
    ============================================================ */
-export const APP_NAME = "دکترتو" as const;
+export const APP_NAME = "مدیتو" as const;
 export const APP_DESCRIPTION = "پلتفرم جامع جستجوی پزشک و رزرو آنلاین نوبت";
 export const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 

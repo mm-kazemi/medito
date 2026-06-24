@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Header — App Shell
  * src/components/layout/Header.tsx
  *
@@ -89,7 +89,7 @@ export function Header() {
           href="/"
           id="logo-link"
           className="flex items-center gap-2 shrink-0"
-          aria-label="دکترتو — صفحه اصلی"
+          aria-label="مدیتو — صفحه اصلی"
         >
           <span
             className={cn(
@@ -103,7 +103,7 @@ export function Header() {
             د
           </span>
           <span className="text-sm font-bold text-neutral-900 tracking-tight">
-            دکترتو
+            مدیتو
           </span>
         </Link>
 

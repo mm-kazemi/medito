@@ -1,4 +1,4 @@
-/**
+﻿/**
  * LoginForm — Auth Feature
  * src/features/auth/LoginForm.tsx
  *
@@ -88,7 +88,7 @@ export function LoginForm() {
       <div className="text-center">
         <h1 className="text-lg font-bold text-neutral-900">ورود به حساب</h1>
         <p className="text-xs text-neutral-400 mt-1">
-          به دکترتو خوش آمدید
+          به مدیتو خوش آمدید
         </p>
       </div>
 

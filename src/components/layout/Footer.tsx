@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Footer — App Shell
  * src/components/layout/Footer.tsx
  *
@@ -33,7 +33,7 @@ const FOOTER_LINKS = [
     ],
   },
   {
-    heading: "دکترتو",
+    heading: "مدیتو",
     links: [
       { label: "درباره ما",      href: "/about"   },
       { label: "تماس با ما",     href: "/contact" },
@@ -109,7 +109,7 @@ export function Footer() {
               href="/"
               id="footer-logo-link"
               className="flex items-center gap-2 w-fit"
-              aria-label="دکترتو — صفحه اصلی"
+              aria-label="مدیتو — صفحه اصلی"
             >
               <span
                 className="w-7 h-7 rounded-md bg-brand-500 flex items-center justify-center text-white text-xs font-bold select-none shrink-0"
@@ -118,7 +118,7 @@ export function Footer() {
                 د
               </span>
               <span className="text-sm font-bold text-neutral-900 tracking-tight">
-                دکترتو
+                مدیتو
               </span>
             </Link>
 
@@ -179,7 +179,7 @@ export function Footer() {
       <div className="border-t border-neutral-100">
         <div className="container-app py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-neutral-400">
-            © {year} دکترتو — تمام حقوق محفوظ است.
+            © {year} مدیتو — تمام حقوق محفوظ است.
           </p>
           <nav aria-label="لینک‌های قانونی" className="flex items-center gap-4">
             {[
