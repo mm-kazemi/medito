@@ -1,7 +1,8 @@
 /**
  * Dashboard Feature — Barrel Export
- * Phase 11: Doctor dashboard, profile setup, schedule management
+ * src/features/dashboard/index.ts
  */
 
-// Phase 11 exports will be added here
-export {};
+export { DashboardLayout }  from "./DashboardLayout";
+export { StatsOverview }    from "./StatsOverview";
+export { AppointmentsList } from "./AppointmentsList";
