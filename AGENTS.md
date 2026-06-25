@@ -1,4 +1,4 @@
-# AGENTS.md – دکترتو (Medito)
+# AGENTS.md – مدیتو (Medito)
 
 Doctor appointment booking platform. Persian/RTL UI. Next.js 15+ App Router.
 
